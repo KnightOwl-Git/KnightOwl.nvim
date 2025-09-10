@@ -191,6 +191,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- test comment delete
+
 -- other terminal stuff:
 -- get rid of terminal numbers
 vim.api.nvim_create_autocmd('TermOpen', {
