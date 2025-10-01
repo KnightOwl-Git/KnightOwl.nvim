@@ -193,8 +193,6 @@ vim.keymap.set('n', '<leader>m', ':make<CR>')
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- test comment delete
-
 -- other terminal stuff:
 -- get rid of terminal numbers
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -957,9 +955,18 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+      -- require('mini.animate').setup()
 
       require('mini.files').setup {
+
         mappings = { close = '\\' },
+        -- add relative numbers to mini files
+        vim.api.nvim_create_autocmd('User', {
+          pattern = 'MiniFilesWindowUpdate',
+          callback = function()
+            vim.wo.relativenumber = true
+          end,
+        }),
       }
 
       -- use backslash to open mini files
@@ -1075,6 +1082,3 @@ require('lazy').setup({
 -- add objective cpp support (Ben)
 --
 vim.filetype.add { extension = { mm = 'objcpp' } }
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
